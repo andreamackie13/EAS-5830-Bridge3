@@ -23,6 +23,7 @@ contract Source is AccessControl {
 
 	function deposit(address _token, address _recipient, uint256 _amount ) public {
 		//YOUR CODE HERE
+    require(approved[_token], "NA");
     ERC20(_token).transferFrom(msg.sender, address(this), _amount);
     emit Deposit(_token, _recipient, _amount);
 	}
@@ -42,4 +43,6 @@ contract Source is AccessControl {
 
 
 }
+
+
 
